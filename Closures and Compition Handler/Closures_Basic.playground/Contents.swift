@@ -43,16 +43,20 @@ let sortedNumbers5 = numbers.sorted(by: <)
 
 
 func makeIncrementer(forIncrement amount: Int) -> () -> Int {
-    let runningTotal = 0
+    var runningTotal = 0
     
-    let incrementer: () -> Int = {
-        return runningTotal + amount
+    func incrementer() -> Int {
+        runningTotal += amount
+        return runningTotal
     }
     return incrementer
 }
 
-let incrementByTwenty = makeIncrementer(forIncrement: 20)
-print(incrementByTwenty())
+
+let incrementByTen = makeIncrementer(forIncrement: 10)
+incrementByTen()
+incrementByTen()
+incrementByTen()
 
 
 
@@ -89,3 +93,13 @@ let result = calculate(2)
  Then, you define a closure calculate. The closure takes one argument multiplier, and it captures database. Within the closure, the data is simply multiplied by multiplier.
  Finally, the closure is called with an argument 2 and its result is assigned to result.
  */
+
+
+var completionHandlers : [()-> Void] = []
+
+func someFunctionWithEscapingClosure(completionHandler: @escaping () -> Void) {
+    completionHandlers.append(completionHandler)
+}
+
+
+
