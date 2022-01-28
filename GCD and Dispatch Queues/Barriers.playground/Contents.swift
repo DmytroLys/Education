@@ -37,11 +37,13 @@ print("array: \(safeArray.elements)")
 
 
 
-//var array: [Int] = []
-//
-//DispatchQueue.concurrentPerform(iterations: 10) { index in
-//    array.append(index)
-//}
-//
-//print("array: \(array)")
+var array: [Int] = []
+
+DispatchQueue.concurrentPerform(iterations: 10) { index in
+    array.append(index)
+}
+
+print("array: \(array)")
+
+
 
